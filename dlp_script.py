@@ -42,18 +42,3 @@ def convert(songs): # runs command line on songs list
     
 songs = load_songs(songs_txt)      
 convert(songs)
-
-# Code improvements:
-# 1. the format is turned into m4a for some reason. 
-# 2. test if ignoring newlines is actually working
-# 3. clear out the txt file (handle unsuccessful downloads)
-# 4. potentially make a web scraper for adding URLs to the txt
-# 5. potentially use more commands 
-
-# iTunes improvements:
-# 1. test to see if itunes ignores existing songs in 'Downloaded Songs'
-# 2. see if i can add things into albums instead of each song being its own album
-# 3. clear out more storage for songs
-
-# SHOULD I PUT THIS ON GITHUB?
-# YES, write a nice readme on this
