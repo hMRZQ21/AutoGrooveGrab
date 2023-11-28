@@ -1,8 +1,12 @@
 import subprocess
+from dotenv import load_dotenv
+import os
 
-yt_dlp_path = r'C:\yt_dlp\yt-dlp.exe'
-songs_txt = r'C:\yt_dlp\Song URLs.txt' # path to txt file with YT URLs
-output_file = r'C:\yt_dlp\Downloaded Songs' # path where downloads are made
+load_dotenv() # loading in env variables from .env
+
+yt_dlp_path = os.getenv('yt_dlp_path')
+songs_txt = os.getenv('songs_txt') # path to txt file with YT URLs
+output_file = os.getenv('output_file') # path where downloads are made
 audio_format = 'aac' 
 audio_quality = '0' # best
 
