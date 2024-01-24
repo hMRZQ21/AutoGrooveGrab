@@ -1,4 +1,4 @@
-import subprocess
+import subprocess as sp
 from dotenv import load_dotenv
 import os
 
@@ -17,12 +17,12 @@ def load_songs(songs_txt): # creates songs list from txt file
         # list comprehension, discards any leading or trailing newlines
 
 def convert(songs): # runs command line on songs list
+    output_template = f"{output_file}/%(title)s.%(ext)s" 
+    # ^ needed for custom download directory
     counter = 0
     size = len(songs)
 
     for song in songs:
-        output_template = f"{output_file}/%(title)s.%(ext)s" 
-        # ^ needed for custom download directory
         command = [yt_dlp_path, song, 
                    '-x', '--audio-format', audio_format,
                     '--audio-quality', audio_quality, 
@@ -30,12 +30,12 @@ def convert(songs): # runs command line on songs list
                     '--add-metadata', '--embed-metadata',
                     '-o', output_template]
         try:
-            subprocess.run(command, check=True)
-            print(f"Downloaded and converted {song} to {audio_format} successfully!\n")
+            sp.run(command, check=True)
+            print(f"\nDownloaded and converted {song} to {audio_format} successfully!\n")
             counter += 1
 
-        except subprocess.CalledProcessError as e:
-            print(f"Error downloading {song}: {e}\n")
+        except sp.CalledProcessError as e:
+            print(f"\nError downloading {song}: {e}\n")
     
     print(f'Songs list size: {size}')
     print(f'Successful Downloads: {counter}\n')
